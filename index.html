@@ -194,15 +194,13 @@
                 </div>
             </div>
 
-            <!-- <div class="info-item">
-                <div class="info-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
+            <div class="info-item">
+                <div class="info-icon">⏱</div>
                 <div class="info-content">
                     <div class="info-label">当前时间</div>
-                    <div class="info-value">2025-06-15 14:30</div>
+                    <div class="info-value" id="current-time">正在获取时间...</div>
                 </div>
-            </div> -->
+            </div>
 
             <div class="info-item">
                 <div class="info-icon">
@@ -230,6 +228,28 @@
             感谢您的理解与配合！
         </div>
     </div>
+
+    <script>
+        // 更新实时时间
+        function updateTime() {
+            const now = new Date();
+            const timeElement = document.getElementById('current-time');
+
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            timeElement.textContent = `${year}-${month}-${day} ${hours}:${minutes}`;
+        }
+
+        // 初始加载时更新时间
+        updateTime();
+
+        // 每分钟更新时间
+        setInterval(updateTime, 60000);
+    </script>
 </body>
 
 </html>
